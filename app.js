@@ -1,48 +1,62 @@
+let player = true;
+let moveCount = 0;
+
 let cells = document.querySelectorAll('.row > div');
 
 for (let i = 0; i < cells.length; i++) {
     cells[i].addEventListener('click', cellClicked);
-}
+};
 
-function cellClicked (cells) {
-    event.target.textContent = 'X';
-}
+function cellClicked(event) {
 
-let playerX = true;
-function cellClicked() {
-    if (playerX) {
+    if (player) {
         event.target.textContent = 'X';
     } else {
         event.target.textContent = 'O';
     }
+    player = !player;
 
-    playerX = !playerX;
-}
+    if (cells[0].textContent === 'X' && cells[1].textContent === 'X' && cells[2].textContent === 'X'
+        || cells[3].textContent === 'X' && cells[4].textContent === 'X' && cells[5].textContent === 'X'
+        || cells[6].textContent === 'X' && cells[7].textContent === 'X' && cells[8].textContent === 'X'
+        || cells[0].textContent === 'X' && cells[3].textContent === 'X' && cells[6].textContent === 'X'
+        || cells[1].textContent === 'X' && cells[4].textContent === 'X' && cells[7].textContent === 'X'
+        || cells[2].textContent === 'X' && cells[5].textContent === 'X' && cells[8].textContent === 'X'
+        || cells[0].textContent === 'X' && cells[4].textContent === 'X' && cells[8].textContent === 'X'
+        || cells[2].textContent === 'X' && cells[4].textContent === 'X' && cells[6].textContent === 'X'
+        || cells[0].textContent === 'O' && cells[1].textContent === 'O' && cells[2].textContent === 'O'
+        || cells[3].textContent === 'O' && cells[4].textContent === 'O' && cells[5].textContent === 'O'
+        || cells[6].textContent === 'O' && cells[7].textContent === 'O' && cells[8].textContent === 'O'
+        || cells[0].textContent === 'O' && cells[3].textContent === 'O' && cells[6].textContent === 'O'
+        || cells[1].textContent === 'O' && cells[4].textContent === 'O' && cells[7].textContent === 'O'
+        || cells[2].textContent === 'O' && cells[5].textContent === 'O' && cells[8].textContent === 'O'
+        || cells[0].textContent === 'O' && cells[4].textContent === 'O' && cells[8].textContent === 'O'
+        || cells[2].textContent === 'O' && cells[4].textContent === 'O' && cells[6].textContent === 'O') {
+        console.log('You Win!');
+        restart();
+        
+    }
+
+    moveCount++
+    if (moveCount === 9) {
+        console.log('No One Wins!'); 
+    } else if (moveCount === 10) {
+        restart();
+    }
 
 
-if (cells[0].cellClicked && cells[1].cellClicked && cells[2].cellClicked) {
-    console.log('You Win!');
-}
 
-/*
-if('click' % 2 !== 0) {
-    cellClicked('X');
-} else {
-    cellClicked('O');
+
+
+    function restart() {
+        location.reload();
+    }
+
+
+
+
 };
 
 
-//event.target is the cell you've clicked on
 
-// ( condition ) ? "X" : "O";
 
-// true/false. If the click is odd or even
-
-//cells[0].textContent, cells[1].textContent, cells[2].textContent = You Win!
-
-// Hints!
-// if else are your friend!
-// cell[0].textContent;
-// comparison operators ===
-
-*/
