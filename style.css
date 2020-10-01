@@ -1,8 +1,19 @@
+body {
+    background-color: blanchedalmond;
+    font-family: 'Poppins', sans-serif;
+}
+
 #board {
     padding: 3em;
     text-align: center;
 }
 
+#winner {
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+/* all 9 cells */
 .row > div {
     float: left;
     height: 100px;
@@ -26,10 +37,13 @@
     border-top: 1px solid black;
 }
 
+.left {
+    border-right: 1px solid black;
+}
+
 .right {
     border-left: 1px solid black;
 }
 
-.left {
-    border-right: 1px solid black;
-}
+
+
